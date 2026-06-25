@@ -6,96 +6,63 @@ function mensagemBoasVindas(nome) {
   return `Olá, ${nome}!`;
 }
 
-function maior(a, b) {
-  if (a > b) {
-    return a
-  }
-  else {
-    return b
-  }
+
+function maiorValor(a, b) {
+  if (a > b) return `${a} é o maior`;
+  if (b > a) return `${b} é o maior`;
+  return `Os valores são iguais`;
 }
 
-function parImpar(a, b) {
-  if (a % 2 == 0 && b % 2 != 0) {
-    return `somente o numero ${a} é par e ${b} é impar`
-  }
-  else if(b % 2 == 0 && a % 2 != 0) {
-    return `somente o numero${b} é par e ${a} é impar`
-  } else if (a % 2 == 0 && b % 2 == 0) {
-    return 'ambos são par'
-  }
-  else {
-    return 'ambos são impar'
-  }
+function parOuImpar(a, b) {
+  const resultA = a % 2 === 0 ? `${a} é par` : `${a} é ímpar`;
+  const resultB = b % 2 === 0 ? `${b} é par` : `${b} é ímpar`;
+  return `${resultA}, ${resultB}`;
 }
 
-function verificarVoto(idade) {
-  if (idade < 16) {
-    return "Não pode votar";
-  } else if (idade < 18) {
-    return "Voto opcional";
-  } else if (idade < 70) {
-    return "Voto obrigatório";
-  } else {
-    return "Voto opcional";
-  }
+function podeVotar(idade) {
+  if (idade < 16) return `Não pode votar`;
+  if (idade === 16 || idade === 17 || idade >= 70) return `Voto opcional`;
+  return `Voto obrigatório`;
 }
 
-function bonus(salario) {
-  if(salario<2000) {
-    return salario * 0.20;
-  }
-  else if (salario <= 5000) {
-    return salario * 0.10;
-  }
-  else {
-    return salario * 0.05;
-  }
+
+function positivoNegativo(valor) {
+  if (valor > 0) return `Positivo`;
+  if (valor < 0) return `Negativo`;
+  return `Igual a zero`;
+}
+
+function calcularBonus(salario) {
+  if (salario < 2000) return salario * 0.20;
+  if (salario <= 5000) return salario * 0.10;
+  return salario * 0.05;
 }
 
 function podeDirigir(idade) {
-  if(idade > 18) {
-    return "pode dirigir"
-  }
-  else {
-    return 'não pode dirigir'
-  }
+  if (idade >= 18) return `Pode dirigir`;
+  return `Não pode dirigir`;
 }
 
 function semestre(mes) {
-  switch (mes.toLowerCase()) {
-    case "janeiro":
-    case "fevereiro":
-    case "março":
-    case "abril":
-    case "maio":
-    case "junho":
-      return "primeiro semestre";
-
-    case "julho":
-    case "agosto":
-    case "setembro":
-    case "outubro":
-    case "novembro":
-    case "dezembro":
-      return "segundo semestre";
-
-    default:
-      return "mes invalido";
-  }
+  const primeiro = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho'];
+  if (primeiro.includes(mes.toLowerCase())) return `Primeiro semestre`;
+  return `Segundo semestre`;
 }
 
-function vogalConsoante(l) {
-  l = l.toLowerCase();
-
-  if (l === "a" || l === "e" || l === "i" || l === "o" || l === "u") {
-    return "vogal";
-  } else {
-    return "consoante";
-  }
+function vogalOuConsoante(letra) {
+  const vogais = ['a', 'e', 'i', 'o', 'u'];
+  if (vogais.includes(letra.toLowerCase())) return `Vogal`;
+  return `Consoante`;
 }
 
+function media(array) {
+  const soma = array.reduce((acc, val) => acc + val, 0);
+  return soma / array.length;
+}
 
+function login(usuario, senha) {
+  if (usuario === 'Admin' && senha === '123') return `Conectado com sucesso!`;
+  return `Acesso negado! Usuário ou senha incorretos!`;
+}
 
-module.exports = { somar, mensagemBoasVindas, maior, parImpar, verificarVoto, bonus, podeDirigir, semestre, vogalConsoante};
-// export default { somar, mensagemBoasVindas };
+module.exports = { somar, mensagemBoasVindas, maiorValor, parOuImpar, podeVotar, positivoNegativo, calcularBonus, podeDirigir, semestre, vogalOuConsoante, media, login };
